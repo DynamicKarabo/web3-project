@@ -4,6 +4,7 @@ import { AdaptiveSidebar } from "@/components/layout/adaptive-sidebar";
 import { TopNavigation } from "@/components/layout/top-navigation";
 import { Breadcrumb } from "@/components/layout/breadcrumb";
 import { FAB } from "@/components/layout/fab";
+import { PullToRefresh } from "@/components/mobile/pull-to-refresh";
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 
@@ -47,7 +48,13 @@ export default function DashboardLayout({
         <Breadcrumb items={breadcrumbItems} />
 
         <main className="flex-1 p-4 md:p-6 pb-24 md:pb-6">
-          {children}
+          <PullToRefresh onRefresh={async () => {
+            // Simulate refresh
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            window.location.reload();
+          }}>
+            {children}
+          </PullToRefresh>
         </main>
       </div>
 

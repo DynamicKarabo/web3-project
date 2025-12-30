@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useRipple } from "@/lib/hooks";
 import { cn } from "@/lib/utils";
+import { Haptics } from "@/lib/mobile";
 
 interface RippleButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     children: React.ReactNode;

@@ -6,6 +6,7 @@ import { Home, FileText, Code, Settings, ChevronLeft, ChevronRight } from "lucid
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Haptics } from "@/lib/mobile";
 
 const navItems = [
     { icon: Home, label: "Dashboard", href: "/" },
@@ -133,7 +134,7 @@ export function AdaptiveSidebar() {
             </motion.aside>
 
             {/* Mobile Bottom Navigation */}
-            <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant z-40 safe-area-inset-bottom">
+            <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant z-40 pb-[env(safe-area-inset-bottom)]">
                 <div className="flex items-center justify-around px-2 py-2">
                     {navItems.map((item) => {
                         const Icon = item.icon;
@@ -143,6 +144,7 @@ export function AdaptiveSidebar() {
                             <Link
                                 key={item.href}
                                 href={item.href}
+                                onClick={() => Haptics.light()}
                                 className={cn(
                                     "flex flex-col items-center gap-1 px-4 py-2 rounded-2xl transition-all duration-200 min-w-[64px]",
                                     "hover:bg-secondary-container",

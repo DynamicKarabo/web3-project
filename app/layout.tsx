@@ -4,6 +4,8 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { NotificationProvider } from "@/components/ui/notification-context";
+import { SafeAreaProvider } from "@/components/mobile/safe-area-provider";
+import Script from "next/script";
 
 // Optimized font loading
 const inter = Inter({
@@ -52,11 +54,33 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     <NotificationProvider>
-                        <div className="relative z-10 mx-auto max-w-[1920px]">
-                            {children}
-                        </div>
+                        <SafeAreaProvider>
+                            <div className="relative z-10 mx-auto max-w-[1920px]">
+                                {children}
+                            </div>
+                        </SafeAreaProvider>
                     </NotificationProvider>
                 </ThemeProvider>
+                <Script
+                    id="register-sw"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            if ('serviceWorker' in navigator) {
+                                window.addEventListener('load', function() {
+                                    navigator.serviceWorker.register('/sw.js').then(
+                                        function(registration) {
+                                            console.log('Service Worker registration successful with scope: ', registration.scope);
+                                        },
+                                        function(err) {
+                                            console.log('Service Worker registration failed: ', err);
+                                        }
+                                    );
+                                });
+                            }
+                        `,
+                    }}
+                />
             </body>
         </html>
     );
