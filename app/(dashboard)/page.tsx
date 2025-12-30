@@ -1,10 +1,13 @@
 import { HeroSection } from "./components/hero-section";
 import { SkillsMatrix } from "./components/skills-matrix";
+import { AnalyticsDashboard } from "./components/analytics-dashboard";
 
 export default function DashboardPage() {
   return (
     <div className="space-y-8">
       <HeroSection />
+
+      <AnalyticsDashboard />
 
       <SkillsMatrix />
 
