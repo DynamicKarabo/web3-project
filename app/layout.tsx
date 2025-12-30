@@ -1,19 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-
-const inter = Inter({
-    subsets: ["latin"],
-    variable: "--font-inter",
-    display: "swap",
-});
-
-const robotoMono = Roboto_Mono({
-    subsets: ["latin"],
-    variable: "--font-roboto-mono",
-    display: "swap",
-});
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
 export const metadata: Metadata = {
     title: "Material 3 Next.js App",
@@ -29,12 +17,17 @@ export default function RootLayout({
         <html lang="en">
             <body
                 className={cn(
-                    "min-h-screen bg-background font-sans antialiased",
-                    inter.variable,
-                    robotoMono.variable
+                    "min-h-screen bg-background font-sans antialiased"
                 )}
             >
-                {children}
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     );
