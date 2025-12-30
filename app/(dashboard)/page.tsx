@@ -1,9 +1,12 @@
 import { HeroSection } from "./components/hero-section";
+import { SkillsMatrix } from "./components/skills-matrix";
 
 export default function DashboardPage() {
   return (
     <div className="space-y-8">
       <HeroSection />
+
+      <SkillsMatrix />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="rounded-3xl bg-secondary-container p-6 text-on-secondary-container transition-transform hover:scale-[1.02]">
