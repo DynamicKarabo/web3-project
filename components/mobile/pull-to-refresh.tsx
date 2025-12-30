@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation, PanInfo } from "framer-motion";
 import { RefreshCcw } from "lucide-react";
 import { Haptics } from "@/lib/mobile";
+import { useMediaQuery } from "@/lib/hooks";
+import { cn } from "@/lib/utils";
 
 interface PullToRefreshProps {
     onRefresh: () => Promise<void>;
@@ -11,11 +13,15 @@ interface PullToRefreshProps {
 }
 
 export function PullToRefresh({ onRefresh, children }: PullToRefreshProps) {
+    const isMobile = useMediaQuery("(max-width: 768px)");
     const containerRef = useRef<HTMLDivElement>(null);
     const [isRefreshing, setIsRefreshing] = useState(false);
     const [pullProgress, setPullProgress] = useState(0);
     const controls = useAnimation();
     const PULL_THRESHOLD = 100;
+
+    // Use a key to reset animation state when switching devices
+    // though usually isMobile check is enough
 
     const handlePan = async (_: unknown, info: PanInfo) => {
         // Only allow pulling if we are at the top of the scroll
@@ -67,6 +73,11 @@ export function PullToRefresh({ onRefresh, children }: PullToRefreshProps) {
         }
     };
 
+    // On non-mobile, just render children without wrapper logic
+    if (!isMobile) {
+        return <div className="contents">{children}</div>;
+    }
+
     return (
         <div className="relative touch-none">
             {/* Refresh Indicator */}
@@ -91,7 +102,7 @@ export function PullToRefresh({ onRefresh, children }: PullToRefreshProps) {
                 onDrag={handlePan}
                 onDragEnd={handlePanEnd}
                 animate={controls}
-                className="relative z-0"
+                className="relative z-0 min-h-full"
                 ref={containerRef}
             >
                 {children}

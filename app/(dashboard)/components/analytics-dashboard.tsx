@@ -224,6 +224,7 @@ export function AnalyticsDashboard() {
                                     border: "1px solid rgb(var(--md-sys-color-outline-variant))",
                                     borderRadius: "12px",
                                 }}
+                                wrapperStyle={{ zIndex: 1000 }}
                             />
                             <Area
                                 type="monotone"
@@ -255,6 +256,7 @@ export function AnalyticsDashboard() {
                                     border: "1px solid rgb(var(--md-sys-color-outline-variant))",
                                     borderRadius: "12px",
                                 }}
+                                wrapperStyle={{ zIndex: 1000 }}
                             />
                             <Legend />
                             <Bar dataKey="users" fill="rgb(var(--md-sys-color-primary))" name="Your Users" radius={[8, 8, 0, 0]} />
@@ -273,7 +275,7 @@ export function AnalyticsDashboard() {
             >
                 <h3 className="text-title-large font-semibold text-on-surface mb-4">Activity Heatmap</h3>
                 <div className="overflow-x-auto">
-                    <div className="inline-grid grid-cols-52 gap-1">
+                    <div className="inline-grid grid-cols-[repeat(52,minmax(0,1fr))] gap-1">
                         {heatmapData.map((cell, i) => (
                             <motion.div
                                 key={i}
