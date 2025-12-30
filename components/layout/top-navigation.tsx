@@ -1,9 +1,10 @@
 "use client";
 
-import { Search, Sun, Moon, User } from "lucide-react";
+import { Sun, Moon, User } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { SmartSearch } from "@/components/ui/smart-search";
 
 export function TopNavigation() {
     const { theme, setTheme } = useTheme();
@@ -18,21 +19,7 @@ export function TopNavigation() {
             <div className="flex items-center gap-4 px-4 md:px-6 h-16">
                 {/* Search Bar */}
                 <div className="flex-1 max-w-2xl">
-                    <div className="relative group">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-on-surface-variant transition-colors group-focus-within:text-primary" />
-                        <input
-                            type="search"
-                            placeholder="Search..."
-                            className={cn(
-                                "w-full pl-12 pr-4 py-3 rounded-full",
-                                "bg-surface-variant/50 border border-outline-variant",
-                                "text-on-surface placeholder:text-on-surface-variant",
-                                "focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent",
-                                "transition-all duration-200",
-                                "hover:bg-surface-variant/70"
-                            )}
-                        />
-                    </div>
+                    <SmartSearch />
                 </div>
 
                 {/* Actions */}
