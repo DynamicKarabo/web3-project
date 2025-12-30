@@ -58,7 +58,7 @@ export default function DashboardLayout({
         </main>
       </div>
 
-      <FAB label="New" onClick={() => console.log("FAB clicked")} />
+      {/* <FAB label="New" onClick={() => console.log("FAB clicked")} /> */}
     </div>
   );
 }
