@@ -7,6 +7,29 @@
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
   }
+
+  html.dev-mode {
+    --primary: 120 100% 50%;
+    /* Matrix Green */
+    cursor: crosshair;
+  }
+
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+
+    body {
+      background: white !important;
+      color: black !important;
+    }
+
+    /* Print-friendly cards */
+    .bg-surface {
+      border: 1px solid #ddd;
+      break-inside: avoid;
+    }
+  }
 }
 
 @layer base {

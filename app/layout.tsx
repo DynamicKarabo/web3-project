@@ -5,6 +5,9 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { NotificationProvider } from "@/components/ui/notification-context";
 import { SafeAreaProvider } from "@/components/mobile/safe-area-provider";
+import { CustomCursor } from "@/components/ui/custom-cursor";
+import { AchievementToast } from "@/components/ui/achievement-toast";
+import { EasterEggManager } from "@/components/ui/easter-egg-manager";
 import Script from "next/script";
 
 // Optimized font loading
@@ -58,6 +61,9 @@ export default function RootLayout({
                             <div className="relative z-10 mx-auto max-w-[1920px]">
                                 {children}
                             </div>
+                            <CustomCursor />
+                            <AchievementToast />
+                            <EasterEggManager />
                         </SafeAreaProvider>
                     </NotificationProvider>
                 </ThemeProvider>

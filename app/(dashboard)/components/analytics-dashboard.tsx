@@ -17,6 +17,7 @@ import {
 import { TrendingUp, TrendingDown, Users, Eye, Clock, Download } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { format, subDays } from "date-fns";
+import { downloadManager } from "@/lib/download-manager";
 
 // Generate mock data
 const generateTimeSeriesData = () => {
