@@ -1,16 +1,11 @@
+import { HeroSection } from "./components/hero-section";
+
 export default function DashboardPage() {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-8 p-8 max-w-4xl mx-auto">
-      <div className="text-center space-y-4">
-        <h1 className="text-display-large font-bold text-on-surface">
-          Material 3 Dashboard
-        </h1>
-        <p className="text-body-large text-on-surface-variant">
-          Your modern, accessible, and dynamic workspace.
-        </p>
-      </div>
+    <div className="space-y-8">
+      <HeroSection />
 
-      <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="rounded-3xl bg-secondary-container p-6 text-on-secondary-container transition-transform hover:scale-[1.02]">
           <h2 className="mb-2 text-headline-small font-semibold">Stats Overview</h2>
           <p className="text-body-medium opacity-80">
@@ -25,10 +20,6 @@ export default function DashboardPage() {
           </p>
         </div>
       </div>
-
-      <button className="h-10 px-6 rounded-full bg-primary text-on-primary font-medium hover:opacity-90 transition-opacity">
-        Get Started
-      </button>
     </div>
   );
 }
