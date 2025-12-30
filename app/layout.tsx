@@ -62,7 +62,7 @@ export default function RootLayout({
                                 {children}
                             </div>
                             <CustomCursor />
-                            {/* <AchievementToast /> */}
+                            <AchievementToast />
                             <EasterEggManager />
                         </SafeAreaProvider>
                     </NotificationProvider>
