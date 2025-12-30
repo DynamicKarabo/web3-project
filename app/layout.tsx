@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { NotificationProvider } from "@/components/ui/notification-context";
 
 export const metadata: Metadata = {
     title: "Material 3 Next.js App",
@@ -35,9 +36,11 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <div className="relative z-10 mx-auto max-w-[1920px]">
-                        {children}
-                    </div>
+                    <NotificationProvider>
+                        <div className="relative z-10 mx-auto max-w-[1920px]">
+                            {children}
+                        </div>
+                    </NotificationProvider>
                 </ThemeProvider>
             </body>
         </html>

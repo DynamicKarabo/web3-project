@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { SmartSearch } from "@/components/ui/smart-search";
+import { Notifications } from "@/components/ui/notifications";
 
 export function TopNavigation() {
     const { theme, setTheme } = useTheme();
@@ -42,6 +43,9 @@ export function TopNavigation() {
                             )}
                         </button>
                     )}
+
+                    {/* Notifications */}
+                    <Notifications />
 
                     {/* User Menu */}
                     <button
